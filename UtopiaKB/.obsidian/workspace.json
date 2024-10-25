@@ -1,0 +1,170 @@
+{
+  "main": {
+    "id": "d7451f5f9ac1ffed",
+    "type": "split",
+    "children": [
+      {
+        "id": "dc3f588a28fd866b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "56f9220b95b6b5f4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "欢迎.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "10489d6d7a4f6fcd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "NewBox/操作系统.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "209f23dd63db4c96",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c9348981847902c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0b22a8813fe90cd7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c98a2a34fc1b93e5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "67bbb668a4d7c8b0",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "149bef3656440611",
+    "type": "split",
+    "children": [
+      {
+        "id": "8f0529a8e362372f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3c95f41ecd6f6314",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "NewBox/操作系统.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d93537b643d0b715",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "NewBox/操作系统.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "66f502efe5fb5e99",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1fff28115a0e4b33",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "NewBox/操作系统.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "10489d6d7a4f6fcd",
+  "lastOpenFiles": [
+    "欢迎.md",
+    "NewBox/操作系统.md",
+    "attachment",
+    "NewBox",
+    "创建链接.md"
+  ]
+}
