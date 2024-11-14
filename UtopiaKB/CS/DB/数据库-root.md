@@ -36,8 +36,154 @@
 	* 总结
 * 关系型数据库
 	* 关系模型介绍(22)
+		* 关系型数据库结构
+			* 关系型数据库由多个表组成，一张表包含多个属性。表中的一行可以看作一个元组，代表了一个关系实例。
+			* 某个属性的取值范围叫做域。域分为原子性的和非原子性的，同时也可为NULL。
+		* 数据库模式
+			* 数据库模式是设计逻辑，数据库实例是当前数据库的一个快照。
+			* 关系模式是数据库模式下的一个概念，关系模式包括属性序列和属性的域。可以表示为  $关系名  (属性_A, 属性_B, ...属性_X)$
+			* 数据库模式的表示就是多个关系模式的集合
+		* 码
+			* 一种关系中，不能存在两个属性完全相同的关系实例。通常能够唯一确定一个关系实例的属性集合K称为超码。真子集不包含超码的最小属性集合称为候选码，候选码可能有多组。人为确定的一个主要用来区分不同元组的候选码称为主码。
+			* 如果关系$R_1$中的某个属性是关系$R_2$的主码。这个属性在$R_1$称作参照$R_2$的外码，$R_1$称作外码依赖的参照关系。$R_2$称作外码的被依赖参照关系。
+			* 参照完整性约束要求：参照关系任意元组在特定属性上的取值必然等于被参照关系中某个元组在特定属性上的取值。
+		* 模式图
+			* 一个含有主码和外码依赖的关系型数据库可以用模式图来表示。其中一个关系名称及其属性用矩形框表示，依赖关系用参照关系的外码属性到被参照关系的主码属性的箭头来表示。
+			* 模式图并不能显示参照完整性约束。后续学习的实体联系图可以表示。
+		* 关系查询语言
+			* query language，是用户从数据库中请求获取信息的语言。分为过程化和非过程化。
+		* 关系运算
+			* 所有过程化查询语言提供一组关系运算。输入一个或两个关系，输出一个关系。
+			* 常见的关系运算有筛选特定行，列。连接两张表。
+			* 由于关系是集合，我们也可以在关系上施加标准的集合运算。
+			* 常见运算：选择、投影、自然连接、笛卡尔积、并
+		* 小结：关系型数据库就是若干关系的集合，关系是包含特定属性的元组的集合。关系中的不同元组要求具有唯一性，码是能够唯一确定一个元组的属性集合。通过码就可以建立关系之间的参考依赖关系。数据库的关系以及其间的参考依赖可以通过模式图可视化表示。关系查询语言从数据库中请求特定数据，其中过程化查询语言利用关系代数的相关操作获取特定数据。
 	* SQL(31)
+		* SQL查询语言概览
+			* 结构化查询语言，包含以下7个部分：数据定义语言、数据操纵语言、完整性、视图定义、事务控制、嵌入式SQL和动态SQL、授权。
+			* 本章讲解DDL和DML。第四章讲解剩下的部分，第五章讲解SQL更高级的特性。
+		* SQL数据定义
+			* 数据库关系集合由DDL指定给系统。包括：每个关系的模式、每个属性的取值类型、完整性约束、每个关系维护的索引集合、每个关系的安全性和权限信息、每个关系在磁盘上的物理存储结构。
+			* 基本类型包括字符串，变长字符串和整数、小数。
+			* 基本模式定义，用create table定义SQL关系。通用格式是`create table table_name(V_name V_type, ..., <完整性约束>, ...);`
+			* 完整性约束举例：`primary key(V, ...)` 、`foreign key(V, ...) reference table_referenced` 、`not null`
+			* 对关系中元组的操作：插入元组`infert into table_name values(V, ...);`、清空元组`delete from table_name;`。
+			* 删除关系`drop table table_name`
+			* 对于关系中属性的操作：添加属性`alert table table_name add V_name V_type`， 删除属性`alert table table_name drop V_name`
+		* SQL查询的基本结构
+			* 单关系查询
+			* `select col from table_name`
+			* `select distinct col from table_name` 删除重复
+			* `select salary * 1.1 from ...` 结果进行计算
+			* `select .. from .. where ...` 关系`and or not` 比较 `=, <>, ...`
+			* 多关系查询
+			* `select A_1, A_2, ... from table1, table2, ... where table1.CN=table2.CN`
+			* from中直接列出的表相当于做了笛卡尔积
+			* 对于常用的自然连接操作，可以用`join`代替where
+			  `select N1, N2  from t1 natural join t2`
+			* `form t1 join using (N1, N2)`表明只要求指定属性相同，而非自然连接的所有。
+		* 附加的基本算法
+			* 属性更名`select N1 as new_N1`
+			* 关系更名`from T1 as new_T1`
+			* 字符串运算`where Nk like '%abc_%'`，`_`表示任意单字符，`%`表示任意字符串
+			* 选择中的属性说明`select T.*`获取表中所有属性 `select *`获取所有属性
+			* 排列元组显示次序`order by N1 desc, N2`默认升序，`desc`降序，可指定多指标。
+			* where的说明`where N1 between V1 and V2`选区间，`where (N1, N2)=(xx, xx)`拓展运算符到列表各个元素上。
+		* 集合运算
+			* 在两个同属性关系上进行的集合运算
+			* 并`union` 不去重并`union all`
+			* 交`intersect` 不去重交`intersect all` 
+			* 差`except` 不去重差`except all`
+		* 空值
+			* 任何涉`null`的运算结果都为`unknown`, 既不是`true`也不是`flase`
+			* 特殊的判断`is null`、 `is not null`、`is unknown`、`is not unknown`
+		* 聚集函数
+			* 五类固有聚合avg, min, max, sum, count
+			* 基本聚合
+				* 平均`select avg(N1) as N1_avg`
+				* 可以用`select count(distinct N1)`去除重复后返回结果
+			* 分组聚合`group by`
+				* 出现在`select`中但没有被聚合的属性只能是`group by`中的属性
+			* having子句
+				* `having` 针对聚合属性的条件筛选。其中出现在`having`中的没有被聚合的属性必须出现在`group by`.
+				* `having`是应用于分组上的筛选条件。
+			* 对空值和布尔值的聚集
+		* 嵌套子查询
+			* 集合成员资格
+				* `where N1 in (xxx另外一个Select From Where关系xxx)`
+				* `where N1 in (元组集合，列举元素)`
+			* 集合的比较
+				* `where N1 > some(SFW关系)`
+				* `=some`等价于`in`， `<>some`等价于`not in`
+			* 空关系测试
+				* `where exists(SFW关系)`当关系不为空时，返回true
+				* `not exists`也是合法的
+			* 重复元组存在性测试
+				* `where unique(SFW)`元组不重复时返回true
+				* `not unique`合法
+			* form 子句中的子查询
+				* SFW返回式是关系，因此可以插入到任何关系可以出现的位置。
+			* with子句
+				* `with T(N1, N2...) as (SWF_) SWF`with为随后的查询定义了临时关系，宫其使用
+			* 标量子查询
+				* 允许子擦汗寻出现在返回单个值的表达式能够出现的任何地方，只要该子查询只返回包含单个属性的单个元组。
+		* 数据库的修改
+			* 删除
+				* `delete from r` 删除关系r上所有元组
+				* `delete from r   where p`P是谓词，只删除符合p的元组
+			* 插入
+				* `insert into course    values(V1, V2, ...)`
+				* 可以在查询基础上插入`insert into T1    select ID, name, 18000 form ...`
+			* 更新
+				* `update T1  set s=s*1.5  where ...`
+				* `set s case when ... then ... else ... end`
 	* 中级SQL(63)
+		* 连接表达式
+			* 连接运算的其他形式，可以指定显示的连接谓词，指定除自然连接之外的元组。
+			* 条件连接
+				* `join ... using ...`
+				* `join ... on ...`这里`on`的效果类似于`where`
+				* `on`连接指定的谓词放到`where`中可以起到相同的效果
+			* 外连接
+				* `outer join`通过在结果中创建包含空值元组的方式，保留了那些在连接中丢失的元组。
+				* `left outer join`左外连接，保留左侧关系中元组
+				* `right outer join`右外连接
+				* `full outer join`全外连接，保留两个关系中的元组。
+				* `natural xxx outer join`也是可以的
+				* 当出现`on`在外连接后面时，谓词起到的效果和出现在`where`后面不同
+			* 连接类型和条件
+				* `inner join`、`left/right/full outer join`
+				* `natural  on<predicate>  using(Ni)`
+		* 视图
+			* 视图定义
+				* `create view v as <query expression>`最后的查询表示一个实际的关系，可以是`SFW`结构
+			* SQL查询中使用视图
+				*  `create view T(N1, N2, ...) as <query expression>`
+				* 数据库存储视图定义而不是视图数据，每次查询都重新计算。
+			* 视图更新
+				* 一般情况下不能更新视图。
+		* 事务
+		* 完整性约束
+			* 防止对数据的以外破坏。
+			* 单个关系上的约束`not null`、`unique`、`check<谓词>`
+			* `not null`约束，`name carchar(20) not null`
+			* `unique(A1, A2, ...)`指定候选码，候选码可以是空值。
+			* `check<谓词>` 检查属性，保证满足指定谓词
+			* 参照完整性约束`foreign key(N1) references T1`
+			* 主键约束`primary key(N1, N2, ...)`
+		* SQL数据类型与模式
+		* 授权
+			* 授权的授予和收回
+				* SQL标准包括`select` `insert`  `update`  `delete`四种权限，
+				* 授予权限使用`grant`， `grant<权限列表>  on<关系名或视图名>  to<用户/用户列表>`
+				* `update (N1)`可以指定只在特定属性上授权
+				* `public`用户名代指所有用户
+				* `revoke`用于收回权限，语句形式与`grant`几乎一样`revoke <>  on <>  from <>`
+			* 角色
+				* 角色相当于用户组，可以像用户那样被授予权限。
+				* `create role R1`创建角色
+				* `grant R1 to U1`可以继承权限，继承可以发生在用户，角色的任意组合上。
+		* 总结
 	* 高级SQL(88)
 	* 形式化关系查询语言(123，略)
 * 数据库设计
