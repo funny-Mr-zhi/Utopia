@@ -8,49 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "56f9220b95b6b5f4",
+            "id": "d8ff60eaf3062d9c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "欢迎.md",
+                "file": "CS/计算机底层的秘密--lxf/计算机底层的秘密-root.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "欢迎"
-            }
-          },
-          {
-            "id": "10489d6d7a4f6fcd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CS/OS/操作系统-Root.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "操作系统-Root"
-            }
-          },
-          {
-            "id": "936184382952847d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CS/DB/数据库-root.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "数据库-root"
+              "title": "计算机底层的秘密-root"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -106,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "149bef3656440611",
@@ -192,15 +162,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "936184382952847d",
+  "active": "d8ff60eaf3062d9c",
   "lastOpenFiles": [
     "CS/OS/操作系统-Root.md",
-    "CS/DB/数据库-root.md",
+    "CS/计算机底层的秘密--lxf/计算机底层的秘密-root.md",
     "创建链接.md",
+    "欢迎.md",
+    "CS/计算机底层的秘密--lxf",
+    "CS/DB/数据库-root.md",
     "CS/DB",
     "CS/OS",
     "CS",
-    "欢迎.md",
     "attachment",
     "NewBox"
   ]
